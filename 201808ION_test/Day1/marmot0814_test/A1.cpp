@@ -6,9 +6,12 @@ int main() {
         double sum = 0;
         for (int i = 0 ; i < n ; i++) {
             double input; cin >> input;
+            bool neg = false;
+            if (input < 0) neg = true, input *= -1;
+            input = (int)(input * 87 + 0.5) / 100.0;
+            if (neg) input *= -1;
             sum += input;
         }
-        sum = max(0.0, sum);
-        printf("%.2f\n", (int)( sum * 87 + .5 ) / 100.0);
+        cout << fixed << setprecision(2) << max(0.0, sum) << '\n';
     }
 }
