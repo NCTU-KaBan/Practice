@@ -1,0 +1,5 @@
+#! /bin/bash
+
+g++ -O2 -std=c++11 test.cpp
+time ./a.out < $1.in > output.out
+diff output.out $1.ans
