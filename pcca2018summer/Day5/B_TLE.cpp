@@ -1,39 +1,13 @@
-#include<cstdio>
-#include<cstring>
-#include<iostream>
-#include<map>
-#include<cmath>
-#include<set>
-#include<algorithm>
-#include<vector>
-#include<functional>
+#include <iostream>
+#include <set>
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <cmath>
 #define F first
 #define S second
 using namespace std;
 typedef pair<int, int> pii; 
-const int MAXN = 2e5 + 5;
-int b[MAXN], c[MAXN];
-inline bool in(int &ret)
-{
-    char ch;
-    bool sgn = false;//正数
-    ret = 0;
-    if ((ch = getchar()) == EOF)return false;//EOF
-    while (ch != '-' && (ch<'0' || ch>'9')) ch = getchar();
-    if (ch == '-') sgn = true;//负数
-    else ret = ch - '0';
-    while (ch = getchar(), ch >= '0'&&ch <= '9') ret = ret * 10 + ch - '0';
-    if (sgn) ret = -ret;
-    return true;//当前输入结束
-}
-inline void out(int n)
-{
-    if (n < 0) {
-        putchar('-'); n = -n;
-    }
-    if (n > 9) out(n / 10);
-    putchar(n % 10 + '0');
-}
 struct MO {
     struct Q {
         int l, r, b, id;
@@ -46,11 +20,11 @@ struct MO {
     };
     vector<Q> q; vector<int> data;
     int qn, sqn;
-    int ans;  // F: cnt, S: num
+    int ans; set<pii> sort_cnt; map<int, int> cnt;  // F: cnt, S: num
     MO(vector<int> &_data, vector<pii> &_q) : data(_data) {
         qn = _q.size(), sqn = (int)(sqrt(qn) + 1e-6);
         for (int i = 0 ; i < _q.size() ; i++) {
-            Q input(_q[i].F, _q[i].S, i, _q.size() / sqn);
+            Q input(_q[i].F, _q[i].S, i, _q[i].F / sqn);
             q.push_back(input);
         }
         ans = 0;
@@ -78,37 +52,32 @@ struct MO {
         for (int i = 0 ; i < q.size() ; i++) {
             Q qu = q[i];
         //for (auto qu : q) {
-            
             while (r < qu.r) pull(data[r++],  1);
-            while (l > qu.l) pull(data[--l],  1);
             while (r > qu.r) pull(data[--r], -1);
+            while (l > qu.l) pull(data[--l],  1);
             while (l < qu.l) pull(data[l++], -1);
             ret[qu.id] = ans;
         }
         return ret;
     }
 };
-int main() {
-    int n, m; while (in(n) && n) {
-        memset(b, 0, sizeof(b));
-        memset(c, 0, sizeof(c));
-	    in(m);
+int main() { ios_base::sync_with_stdio(false); cin.tie(0);
+    int n, m; while (cin >> n && n) {
+	    cin >> m;	
         vector<int> data;
         for (int i = 0 ; i < n ; i++) {
-            int input; in(input); 
-            input += MAXN / 2;
+            int input; cin >> input;
             data.push_back(input);
         }
         vector<pii> q;
         while (m--) {
-            int l, r; in(l); in(r);
+            int l, r; cin >> l >> r; l--;
             q.push_back(make_pair(l, r));
         }
         MO *sol = new MO(data, q);
         vector<int> ans = sol->solve();
         for (int i = 0 ; i < ans.size() ; i++) {
-            out(ans[i]);
-            puts("");
+            cout << ans[i] << '\n';
         }
         delete sol;
     }
