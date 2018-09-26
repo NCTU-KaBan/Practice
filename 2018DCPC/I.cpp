@@ -1,11 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(0);
     int t; cin >> t; while (t--) {
         int n; cin >> n;
-        for (int i = 0 ; i < n ; i++) {
-
+        int sum = 0, minV = 1e7;
+        for (int i = 0 ; i < n;  i++) {
+            int input; cin >> input;
+            sum += input;
+            minV = min(minV, input);
+        }
+        if (n % 2) {
+            if (sum % 2) cout << "Yalalov\n";
+            else cout << "Shin\n";
+        } else {
+            if (sum % 2) { 
+                cout << "Yalalov\n";
+                continue;
+            }
+            if (minV % 2) cout << "Yalalov\n";
+            else cout << "Shin\n";
         }
     }
 }
