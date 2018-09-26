@@ -4,9 +4,7 @@ const int MAXN = 1e5 + 5;
 const int lgN  = __lg(MAXN);
 typedef long long LL;
 const LL INF = 0x3f3f3f3f3f3f3f3f;
-struct Edge {
-    int u, v; LL w;
-};
+struct Edge { int u, v; LL w; };
 int pa[MAXN];
 int _find(int x) { return pa[x] == x ? x : pa[x] = _find(pa[x]); }
 struct Tree {
@@ -55,21 +53,6 @@ struct Tree {
                 ans += u->sum[i] + v->sum[i],
                 u = u->pa[i], v = v->pa[i];
         return ans + u->sum[0] + v->sum[0];
-    }
-    void Print() {
-        Print(node[0]);
-        for (int i = 0 ; i < V ; i++) {
-            cout << i << " : ";
-            for (int j = 0 ; j < lgN ; j++)
-                cout << node[i]->sum[j] << ' ';
-            cout << '\n';
-        }
-    }
-    void Print(Node *u) {
-        if (!u) return ;
-        cout << u - _memN << ' ' << u->dep << ' ' << u->v << '\n';
-        for (auto v : *u)
-            Print(v);
     }
 };
 void dfs(int u, int p, int d, vector<vector<int> > &G, vector<int> &dep) {
@@ -121,7 +104,6 @@ int main() { ios_base::sync_with_stdio(false); cin.tie(0);
             sol->node[e.v]->v = e.w;
         }
         sol->solve();
-        // sol->Print();
         while (q--) {
             Edge e = edges[extra];
             int u, v; cin >> u >> v;
@@ -133,6 +115,5 @@ int main() { ios_base::sync_with_stdio(false); cin.tie(0);
             cout << ans << '\n';
         }
         delete sol;
-
     }
 }
