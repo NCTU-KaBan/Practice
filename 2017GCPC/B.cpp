@@ -21,6 +21,9 @@ int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
     LL n, m, c;
     cin >> n >> m >> c;
-    LL ans = (fpow(c, n * n * m) + (m - 1) * fpow(c, n * n)) % MOD;
+    LL ans = 0;
+    for (LL i = 0 ; i < m ; i++)
+    	ans += fpow(c, n * n * __gcd(i, m)),
+    	ans %= MOD;
     cout << ans * modInv(m, MOD) % MOD << '\n';
 }
