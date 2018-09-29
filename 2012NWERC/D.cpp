@@ -31,7 +31,7 @@ int main() {
     a[7][1] = true; a[7][7] = true;
     a[8][0] = true; a[8][1] = true; a[8][2] = true; a[8][3] = true; a[8][4] = true; 
     a[8][5] = true; a[8][6] = true; a[8][7] = true; a[8][8] = true; a[8][9] = true;
-    a[9][1] = true; a[9][3] = true; a[9][4] = true; a[9][7] = true; a[9][9] = true;
+    a[9][1] = true; a[9][3] = true; a[9][4] = true; a[9][5] = true;  a[9][7] = true; a[9][9] = true;
     bool digit[10][7] = {
         {1, 1, 1, 0, 1, 1, 1},
         {0, 0, 1, 0, 0, 1, 0},
