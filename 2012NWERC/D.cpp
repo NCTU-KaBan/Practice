@@ -6,20 +6,6 @@ void OR(bool *target, bool *arr) {
 }
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
-    /*
-    int alpha[10][10] = {
-        {0, 7, 1},
-        {1},
-        {2},
-        {1, 3, 7},
-        {1, 4},
-        {5},
-        {5, 6},
-        {1, 7},
-        {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 
-        {1, 3, 4, 7, 9},
-    };
-    */
     bool a[10][10]; memset(a, false, sizeof(a));
     a[0][0] = true; a[0][1] = true; a[0][7] = true;
     a[1][1] = true;
