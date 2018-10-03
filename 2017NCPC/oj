@@ -1,0 +1,6 @@
+#! /bin/bash
+
+g++ gen.cpp
+./a.out > input.in
+g++ -O2 E.cpp
+time ./a.out < input.in
