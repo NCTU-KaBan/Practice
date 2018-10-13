@@ -43,26 +43,32 @@ int main() {
                     }
                     if(s_in_2) break;
                 }
+                if(s_in_2) break;
             }
+
             if(s_in_1 && s_in_2){
+                //cout << i << " " << l << " " << s << '\n';
                 set<int> seq;
                 for(int p = 0; p < 5; p++){
                     seq.insert(row1[p]);
                     seq.insert(row2[p]);
                 }
                 seq.erase(s);
-                int cnt = 0;
                 bool if_tie = 1;
-                for(int q = l+1; q < N; q++){
+                int cnt = 0;
+                for(int q = 0; q < N; q++){
                     for(int j = 0; j < 5; j++){
+                        cnt = 0;
                         for(int k = 0; k < 5; k++){
                             if(seq.count(card[q][j][k])) cnt++;
                         }
+                        if(cnt == 5){
+                            if_tie = 0;
+                            //cout << i << l << q;
+                            break;
+                        }
                     }
-                    if(cnt == 5){
-                        if_tie = 0;
-                        break;
-                    } 
+                    if(cnt == 5) break;
                 }
                 if(if_tie) tie[pii(i, l)]++;
             }
