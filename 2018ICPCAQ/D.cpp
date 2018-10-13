@@ -27,6 +27,7 @@ int main() {
             y++;
         }
         if (x == n) break;
+		if (S[x] == 0) continue;
         if (I[x] == 1) {
             dead = true;
             break;
@@ -54,22 +55,27 @@ int main() {
          //cout << "X " << x << ' ' << "Y " << y << '\n';
          //cout << "S O I\n";
          //cout << S[x] << ' ' << O[x] << ' ' << I[x] << '\n';
-            if (S[x] == 0) {
+            int check;
+			if (S[x] == 0) {
             } else {
-                if (x % 2 == n % 2) {
+                if (x % 2 != n % 2) {
                     //cout << "trans " << trans(y - (i + 1) * S[x] - O[x], I[x]) << '\n';
                     //cout << "S " << S[x] << '\n';
-                    int check = trans(y - i * S[x] - O[x], I[x] * S[x]);
-                    if (check < S[x] && check > 0)
+                    check = trans(y - i * S[x] - O[x], I[x] * S[x]);
+                    if (check <= S[x] && check > 0)
                         dead = true;
                 } else {
                      //cout << "trans " << trans(y + (i + 1) * S[x] - O[x], I[x]) << '\n';
                      //cout << "S " << S[x] << '\n';
-                    int check = trans(y + i * S[x] - O[x], I[x] * S[x]);
-                    if (check < S[x] && check > 0)
+					O[x] = W - O[x] - 1; 
+                    check = trans(y + i * S[x] - O[x], I[x] * S[x]);
+                    if (check <= S[x] && check > 0)
                         dead = true;
                 }
-              //cout << "dead " << dead << '\n';
+			 // cout << "t= " << i << '\n';
+	  		 // cout << "dead " << dead << '\n';
+			 // cout << "x " << x << '\n';
+			 // cout << "check " << check << '\n';
             }
         }
         if (dead) break;
