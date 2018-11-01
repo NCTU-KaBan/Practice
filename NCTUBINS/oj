@@ -1,0 +1,9 @@
+#! /bin/bash
+
+g++ gen.cpp
+./a.out > input.in
+g++ -std=c++11 J.cpp
+./a.out < input.in > output.out
+g++ test.cpp
+./a.out < input.in > ans.out
+vimdiff output.out ans.out
