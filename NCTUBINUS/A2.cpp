@@ -13,5 +13,22 @@ int main() {
         val[3] = 20, val[4] = 50, val[5] = 100;
         val[6] = 200, val[7] = 500, val[8] = 1000;
         val[9] = 2000;
+        LL total = 0; 
+        for (int i = 0 ; i < 10 ; i++)
+            total += val[i] * data[i];
+        if (total - p < 0) {
+            cout << -1 << '\n';
+            continue;
+        }
+        if (total == 0) {
+            cout << 0 << '\n';
+            continue;
+        }
+        LL total_coin = 0;
+        for (int i = 0 ; i < 10 ; i++)
+            total_coin += data[i];
+
+        LL target = total - p;
+
     }
 }
