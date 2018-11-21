@@ -1,0 +1,10 @@
+#! /bin/bash
+
+g++ gen.cpp
+./a.out > input.in
+g++ test.cpp
+./a.out < input.in > ans.out
+g++ C2.cpp
+./a.out < input.in > output.out
+vimdiff output.out ans.out
+
