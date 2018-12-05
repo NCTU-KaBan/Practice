@@ -1,0 +1,8 @@
+#! /bin/bash
+
+g++ -std=c++11 gen.cpp -o gen.out
+g++ -std=c++11 C.cpp -o C.out
+g++ -std=c++11 C_check.cpp -o C_check.out
+
+
+

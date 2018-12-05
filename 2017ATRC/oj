@@ -1,0 +1,6 @@
+#! /bin/bash
+
+./gen.out > input.in
+./C.out < input.in > output.out
+./C_check.out < input.in > ans.out
+diff output.out ans.out
